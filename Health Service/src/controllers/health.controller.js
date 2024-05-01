@@ -2,8 +2,12 @@ const axios = require('axios');
 
 const healthCtrl = {};
 
+const AUTH_SERVICE= process.env.AUTH_SERVICE;
+const USER_SERVICE= process.env.USER_SERVICE;
+const MARVEL_SERVICE= process.env.MARVEL_SERVICE;
+
 healthCtrl.checkServices = async (req, res) => {
-    const serviceUrls = ['http://localhost:8090/api/status', 'http://localhost:8092/marvel/status', 'http://localhost:8091/user/status'];
+    const serviceUrls = [AUTH_SERVICE, USER_SERVICE, MARVEL_SERVICE];
   
     const requests = serviceUrls.map(url => axios.get(url).then(response => {
       return {

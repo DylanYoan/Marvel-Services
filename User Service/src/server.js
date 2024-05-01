@@ -12,7 +12,6 @@ app.use(express.json());
 const config = require("./config");
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
-app.use(authorizedServiceMiddleware);
 
 app.use("/user", require('./routes/user.routes'));
 app.use("/user", require('./routes/status.routes'));

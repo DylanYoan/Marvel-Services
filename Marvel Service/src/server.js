@@ -9,7 +9,6 @@ const config = require("./config");
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 const authorizedServiceMiddleware = require('./middleware/authorizedServices.middleware');
-app.use(authorizedServiceMiddleware);
 
 app.set("port", process.env.PORT || 4000);
 
