@@ -2,9 +2,10 @@ const router = require("express").Router();
 
 const {
     singup,
+    getUsers
+} = require("../controllers/user.controller");
 
-} = require("../controllers/users.controller");
-
-router.post("/user/signup", singup);
+router.post("/signup", singup);
+router.get("/getUsers", getUsers);
 
 module.exports = router;

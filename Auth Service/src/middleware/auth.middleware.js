@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
 
   const token = authHeader.split(' ')[1];
   try {
-    const payload = jwt.verify(token, 'secret');
+    const payload = jwt.verify(token, secret);
     req.user = payload; // Adjunta el payload a la solicitud
     next();
   } catch (err) {

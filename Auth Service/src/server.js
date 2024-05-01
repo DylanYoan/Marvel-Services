@@ -6,23 +6,20 @@ const methodOverride = require("method-override");
 
 const doenv = require('dotenv');
 app.use(express.json());
-
-app.use(express.json());
 const config = require("./config");
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 
 // Aquí se montan las rutas de autenticación
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+app.set("port", process.env.PORT || 4000);
 
 
-app.use(require('./routes/auth.routes'));
-app.use(require('./routes/user.routes'));
+app.use("/api", require('./routes/auth.routes'));
+app.use("/api/marvel", require('./routes/marvel.routes'));
+app.use("/api/users", require('./routes/user.routes'));
+app.use("/api/health", require('./routes/health.routes'));
+app.use("/api", require('./routes/status.routes'));
 
 app.use(express.static(path.join(__dirname, "public")));
 
